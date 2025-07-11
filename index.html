@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags (Default: Español) -->
+    <title id="meta-title">AEROPUERTOS.lat | Tu Guía Completa de Aeropuertos en Latinoamérica</title>
+    <meta id="meta-description" name="description" content="Encuentra información en tiempo real de vuelos, mapas interactivos, guías de terminales y servicios VIP para todos los aeropuertos de América Latina.">
+    <meta name="keywords" content="aeropuertos, latam, vuelos, tiempo real, mapas, guías, vip, viajes">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/003087/FFFFFF?text=A.L" type="image/png">
+
+    <!-- Hreflang Tags for SEO -->
+    <link rel="alternate" hreflang="es" href="https://aeropuertos.lat/">
+    <link rel="alternate" hreflang="en" href="https://aeropuertos.lat/en/">
+    <link rel="alternate" hreflang="pt" href="https://aeropuertos.lat/pt/">
+    <link rel="alternate" hreflang="x-default" href="https://aeropuertos.lat/">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Custom color palette inspired by flughafen-zuerich.ch */
+        .bg-brand-primary { background-color: #003087; } /* Dark Blue */
+        .bg-brand-secondary { background-color: #0065E1; } /* Bright Blue */
+        .bg-brand-accent { background-color: #FFC72C; } /* Yellow */
+
+        .text-brand-primary { color: #003087; }
+        .text-brand-secondary { color: #0065E1; }
+        .text-brand-accent { color: #FFC72C; }
+
+        .hover\:bg-brand-secondary-dark:hover { background-color: #0052B3; } /* Darker bright blue for hover */
+        
+        .ring-brand-secondary { ring-color: #0065E1; }
+        .border-brand-secondary { border-color: #0065E1; }
+        .focus\:ring-brand-secondary:focus { --tw-ring-color: #0065E1; }
+        .focus\:border-brand-secondary:focus { border-color: #0065E1; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* gray-50 */
+            color: #212529;
+        }
+        .scroll-smooth { scroll-behavior: smooth; }
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(0, 48, 135, 0.85), rgba(0, 48, 135, 0.95)), url('https://images.unsplash.com/photo-1530521954074-e64f6810b32d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="text-gray-700 scroll-smooth">
+
+    <!-- ============================================ -->
+    <!-- HEADER -->
+    <!-- ============================================ -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-2">
+                <svg class="h-8 w-8 text-brand-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 1 4 4-1 1-4H6l2-3 4.5 4.5L13 19l5 4 1-1-2.2-3.8Z"/></svg>
+                <span class="font-bold text-2xl text-brand-primary">AEROPUERTOS.lat</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#features" class="text-gray-600 hover:text-brand-secondary transition-colors" data-lang="nav_features">Beneficios</a>
+                <a href="#affiliates" class="text-gray-600 hover:text-brand-secondary transition-colors" data-lang="nav_affiliates">Afiliados</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-brand-secondary transition-colors" data-lang="nav_testimonials">Testimonios</a>
+            </nav>
+
+            <!-- Language Switcher -->
+            <div class="flex items-center space-x-2">
+                <button onclick="changeLanguage('es')" class="lang-btn active:ring-2 ring-brand-secondary rounded-full px-3 py-1 text-sm font-medium" data-lang-code="es">ES</button>
+                <span class="text-gray-300">|</span>
+                <button onclick="changeLanguage('en')" class="lang-btn active:ring-2 ring-brand-secondary rounded-full px-3 py-1 text-sm font-medium text-gray-400" data-lang-code="en">EN</button>
+                <span class="text-gray-300">|</span>
+                <button onclick="changeLanguage('pt')" class="lang-btn active:ring-2 ring-brand-secondary rounded-full px-3 py-1 text-sm font-medium text-gray-400" data-lang-code="pt">PT</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================================ -->
+    <main>
+
+        <!-- ============================================ -->
+        <!-- HERO SECTION -->
+        <!-- ============================================ -->
+        <section id="hero" class="hero-bg text-white py-24 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4" data-lang="hero_title">
+                    Toda la información de aeropuertos en LATAM, en un solo lugar.
+                </h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-200 mb-8" data-lang="hero_subtitle">
+                    Desde el estado de tu vuelo en tiempo real hasta guías exclusivas de salas VIP. Simplificamos tu experiencia de viaje.
+                </p>
+                <a href="#features" class="bg-brand-secondary text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-brand-secondary-dark transition-all transform hover:scale-105" data-lang="hero_cta">
+                    Descúbrelo Ahora
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- FEATURES SECTION -->
+        <!-- ============================================ -->
+        <section id="features" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-primary" data-lang="features_title">Tu Asistente de Viaje Inteligente</h2>
+                    <p class="text-lg text-gray-600 mt-2 max-w-2xl mx-auto" data-lang="features_subtitle">Todo lo que necesitas para que tu paso por el aeropuerto sea perfecto.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-brand-secondary/10 mx-auto mb-4">
+                            <svg class="h-8 w-8 text-brand-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-primary mb-2" data-lang="feature1_title">Vuelos en Tiempo Real</h3>
+                        <p class="text-gray-600" data-lang="feature1_desc">Sigue cualquier vuelo, recibe alertas de cambios de puerta, retrasos y cancelaciones al instante.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-brand-secondary/10 mx-auto mb-4">
+                           <svg class="h-8 w-8 text-brand-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503-6.998 4.277-1.835a.375.375 0 0 1 .47.47l-1.836 4.277M19.5 9.75l4.277-1.835a.375.375 0 0 1 .47.47l-1.836 4.277m-1.333 2.471-4.276 1.836a.375.375 0 0 1-.47-.47l1.835-4.276m-1.333-2.47-4.276 1.836a.375.375 0 0 1-.47-.47l1.835-4.276M4.5 15.75l4.277-1.835a.375.375 0 0 1 .47.47l-1.836 4.277" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-primary mb-2" data-lang="feature2_title">Mapas Interactivos</h3>
+                        <p class="text-gray-600" data-lang="feature2_desc">Navega por las terminales como un experto. Encuentra tiendas, restaurantes y tu puerta de embarque sin estrés.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-brand-secondary/10 mx-auto mb-4">
+                           <svg class="h-8 w-8 text-brand-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9a9.75 9.75 0 1 0 0-13.5h9a9.75 9.75 0 1 0 0 13.5ZM16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-primary mb-2" data-lang="feature3_title">Guías y Servicios VIP</h3>
+                        <p class="text-gray-600" data-lang="feature3_desc">Accede a información sobre salas VIP, transportes y servicios exclusivos para un viaje de primera clase.</p>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-brand-secondary/10 mx-auto mb-4">
+                            <svg class="h-8 w-8 text-brand-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.5-2.962a3.75 3.75 0 0 1 5.304 0M11.25 10.5c0-1.798 1.402-3.25 3.125-3.25s3.125 1.452 3.125 3.25c0 1.798-1.402 3.25-3.125 3.25S11.25 12.298 11.25 10.5z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 21a6.75 6.75 0 0 0 9-8.586 6.75 6.75 0 0 0-1.233-1.612.563.563 0 0 1-.392-.898C21.023 8.35 21 6.96 21 5.25a6.75 6.75 0 0 0-13.5 0c0 1.71.023 3.1.533 4.654a.562.562 0 0 1-.392.898 6.75 6.75 0 0 0-1.233 1.612A6.75 6.75 0 0 0 12.75 21z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-primary mb-2" data-lang="feature4_title">Programa de Afiliados</h3>
+                        <p class="text-gray-600" data-lang="feature4_desc">Monetiza tu sitio web de viajes. Únete a nuestro programa de partners y ofrece valor a tu audiencia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- AFFILIATES / COMING SOON SECTION -->
+        <!-- ============================================ -->
+        <section id="affiliates" class="py-20 bg-brand-primary text-white">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4" data-lang="affiliates_title">Conviértete en Partner</h2>
+                        <p class="text-lg text-gray-300 mb-6" data-lang="affiliates_desc">
+                            Estamos construyendo la red de afiliados de viajes más grande de LATAM. Si tienes un blog, agencia o eres un creador de contenido, únete a nuestra lista de espera y sé el primero en saberlo.
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center" data-lang="affiliates_perk1"><svg class="h-5 w-5 text-brand-accent mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Comisiones competitivas</li>
+                            <li class="flex items-center" data-lang="affiliates_perk2"><svg class="h-5 w-5 text-brand-accent mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>APIs y Widgets listos para usar</li>
+                            <li class="flex items-center" data-lang="affiliates_perk3"><svg class="h-5 w-5 text-brand-accent mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Soporte dedicado para partners</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-2xl">
+                        <h3 class="text-2xl font-bold text-brand-primary mb-1" data-lang="form_title">Próximamente...</h3>
+                        <p class="text-gray-600 mb-6" data-lang="form_subtitle">Recibe noticias y acceso anticipado.</p>
+                        <form id="subscribe-form">
+                            <div class="mb-4">
+                                <label for="email" class="sr-only" data-lang="form_email_label">Email</label>
+                                <input type="email" name="Email" id="email" class="w-full px-4 py-3 rounded-md border-gray-300 focus:ring-brand-secondary focus:border-brand-secondary text-gray-800" placeholder="tu@email.com" required>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-secondary text-white font-bold py-3 px-4 rounded-md hover:bg-brand-secondary-dark transition-colors" data-lang="form_button">
+                                Hablemos
+                            </button>
+                        </form>
+                        <div id="form-status" class="mt-4 text-center text-sm"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- TESTIMONIALS SECTION -->
+        <!-- ============================================ -->
+        <section id="testimonials" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-primary" data-lang="testimonials_title">Lo que dicen nuestros usuarios</h2>
+                    <p class="text-lg text-gray-600 mt-2 max-w-2xl mx-auto" data-lang="testimonials_subtitle">La confianza de los viajeros y líderes de la industria.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                        <p class="text-gray-600 mb-6" data-lang="testimonial1_text">"La API de vuelos en tiempo real de AEROPUERTOS.lat se integró perfectamente en nuestra plataforma. ¡Nuestros usuarios la aman!"</p>
+                        <div class="flex items-center">
+                            <img class="w-12 h-12 rounded-full mr-4" src="https://i.pravatar.cc/150?img=1" alt="Foto de perfil de Ana García">
+                            <div>
+                                <p class="font-bold text-brand-primary" data-lang="testimonial1_name">Ana García</p>
+                                <p class="text-sm text-gray-500" data-lang="testimonial1_company">CEO, ViajesTech</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                        <p class="text-gray-600 mb-6" data-lang="testimonial2_text">"Como viajero frecuente, tener toda la información consolidada me ahorra muchísimo tiempo y estrés. ¡Imprescindible!"</p>
+                        <div class="flex items-center">
+                            <img class="w-12 h-12 rounded-full mr-4" src="https://i.pravatar.cc/150?img=2" alt="Foto de perfil de Carlos Rodriguez">
+                            <div>
+                                <p class="font-bold text-brand-primary" data-lang="testimonial2_name">Carlos Rodriguez</p>
+                                <p class="text-sm text-gray-500" data-lang="testimonial2_company">Consultor Internacional</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Testimonial 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                        <p class="text-gray-600 mb-6" data-lang="testimonial3_text">"Los mapas de terminales son un salvavidas. Pude encontrar mi conexión en São Paulo en minutos gracias a la app."</p>
+                        <div class="flex items-center">
+                            <img class="w-12 h-12 rounded-full mr-4" src="https://i.pravatar.cc/150?img=3" alt="Foto de perfil de Sofia Lima">
+                            <div>
+                                <p class="font-bold text-brand-primary" data-lang="testimonial3_name">Sofia Lima</p>
+                                <p class="text-sm text-gray-500" data-lang="testimonial3_company">Blogger de Viajes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="bg-brand-primary text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <!-- About -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4" data-lang="footer_about_title">AEROPUERTOS.lat</h4>
+                    <p class="text-gray-300" data-lang="footer_about_desc">Simplificando la experiencia de viaje en Latinoamérica con tecnología e información precisa.</p>
+                </div>
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4" data-lang="footer_links_title">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-300 hover:text-white" data-lang="footer_link_features">Beneficios</a></li>
+                        <li><a href="#affiliates" class="text-gray-300 hover:text-white" data-lang="footer_link_affiliates">Afiliados</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white" data-lang="footer_link_contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <!-- Social -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4" data-lang="footer_social_title">Síguenos</h4>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.28C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.45,16 6.13,17.26 8.12,17.29C6.67,18.45 4.81,19.12 2.79,19.12C2.45,19.12 2.11,19.1 1.78,19.05C3.78,20.29 6.14,21 8.74,21C16,21 20.28,14.88 20.28,9.2C20.28,9.03 20.27,8.87 20.26,8.71C21.04,8.17 21.83,7.15 22.46,6Z" /></svg></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 5.58,20 10,20C10.76,20 11.5,19.92 12.19,19.77C12.06,19.53 12,19.27 12,19C12,17.78 12.65,16.73 13.5,16.03C13.13,15.91 12.75,15.82 12.36,15.79C12.28,15.78 12.21,15.77 12.13,15.76C10.22,15.54 8.6,14.28 8.6,12.2C8.6,10.62 9.68,9.44 11.07,9.07C11,8.85 10.83,8.14 11.13,7.5C11.13,7.5 11.83,7.26 13.5,8.5C14.2,8.31 14.95,8.22 15.75,8.22C16.55,8.22 17.3,8.31 18,8.5C19.67,7.26 20.37,7.5 20.37,7.5C20.67,8.14 20.5,8.85 20.43,9.07C21.82,9.44 22.9,10.62 22.9,12.2C22.9,14.28 21.28,15.54 19.37,15.76C19.29,15.77 19.22,15.78 19.14,15.79C18.75,15.82 18.37,15.91 18,16.03C18.85,16.73 19.5,17.78 19.5,19C19.5,19.27 19.44,19.53 19.31,19.77C20,19.92 20.74,20 21.5,20C21.67,20 21.83,20 22,19.97C21.83,20.31 21.67,20.65 21.5,21C20.33,21.67 19.05,22 17.67,22C15.81,22 14.05,21.56 12.5,20.82C12.33,20.88 12.17,20.94 12,21A10,10 0 0,1 2,12M12,4A8,8 0 0,1 20,12C20,15.54 17.54,19 14,19.82C14.73,18.94 15.17,17.79 15.17,16.5C15.17,14.23 13.42,12.47 11.15,12.47C8.88,12.47 7.13,14.23 7.13,16.5C7.13,17.79 7.57,18.94 8.3,19.82C4.46,19 2,15.54 2,12A8,8 0 0,1 12,4Z" /></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-blue-800 text-center text-gray-400 text-sm">
+                <p data-lang="footer_copyright">&copy; 2024 AEROPUERTOS.lat. Todos los derechos reservados.</p>
+                <p class="mt-1">
+                    <a href="#" class="hover:text-white" data-lang="footer_privacy">Política de Privacidad</a> | 
+                    <a href="#" class="hover:text-white" data-lang="footer_terms">Términos de Servicio</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================================ -->
+    <script>
+        // --- Language Content Object ---
+        const translations = {
+            es: {
+                // Meta
+                "meta-title": "AEROPUERTOS.lat | Tu Guía Completa de Aeropuertos en Latinoamérica",
+                "meta-description": "Encuentra información en tiempo real de vuelos, mapas interactivos, guías de terminales y servicios VIP para todos los aeropuertos de América Latina.",
+                // Nav
+                nav_features: "Beneficios",
+                nav_affiliates: "Afiliados",
+                nav_testimonials: "Testimonios",
+                // Hero
+                hero_title: "Toda la información de aeropuertos en LATAM, en un solo lugar.",
+                hero_subtitle: "Desde el estado de tu vuelo en tiempo real hasta guías exclusivas de salas VIP. Simplificamos tu experiencia de viaje.",
+                hero_cta: "Descúbrelo Ahora",
+                // Features
+                features_title: "Tu Asistente de Viaje Inteligente",
+                features_subtitle: "Todo lo que necesitas para que tu paso por el aeropuerto sea perfecto.",
+                feature1_title: "Vuelos en Tiempo Real",
+                feature1_desc: "Sigue cualquier vuelo, recibe alertas de cambios de puerta, retrasos y cancelaciones al instante.",
+                feature2_title: "Mapas Interactivos",
+                feature2_desc: "Navega por las terminales como un experto. Encuentra tiendas, restaurantes y tu puerta de embarque sin estrés.",
+                feature3_title: "Guías y Servicios VIP",
+                feature3_desc: "Accede a información sobre salas VIP, transportes y servicios exclusivos para un viaje de primera clase.",
+                feature4_title: "Programa de Afiliados",
+                feature4_desc: "Monetiza tu sitio web de viajes. Únete a nuestro programa de partners y ofrece valor a tu audiencia.",
+                // Affiliates
+                affiliates_title: "Conviértete en Partner",
+                affiliates_desc: "Estamos construyendo la red de afiliados de viajes más grande de LATAM. Si tienes un blog, agencia o eres un creador de contenido, únete a nuestra lista de espera y sé el primero en saberlo.",
+                affiliates_perk1: "Comisiones competitivas",
+                affiliates_perk2: "APIs y Widgets listos para usar",
+                affiliates_perk3: "Soporte dedicado para partners",
+                // Form
+                form_title: "Próximamente...",
+                form_subtitle: "Recibe noticias y acceso anticipado.",
+                form_email_label: "Email",
+                form_button: "Hablemos", // <-- CHANGED
+                // Testimonials
+                testimonials_title: "Lo que dicen nuestros usuarios",
+                testimonials_subtitle: "La confianza de los viajeros y líderes de la industria.",
+                testimonial1_text: "\"La API de vuelos en tiempo real de AEROPUERTOS.lat se integró perfectamente en nuestra plataforma. ¡Nuestros usuarios la aman!\"",
+                testimonial1_name: "Ana García",
+                testimonial1_company: "CEO, ViajesTech",
+                testimonial2_text: "\"Como viajero frecuente, tener toda la información consolidada me ahorra muchísimo tiempo y estrés. ¡Imprescindible!\"",
+                testimonial2_name: "Carlos Rodriguez",
+                testimonial2_company: "Consultor Internacional",
+                testimonial3_text: "\"Los mapas de terminales son un salvavidas. Pude encontrar mi conexión en São Paulo en minutos gracias a la app.\"",
+                testimonial3_name: "Sofia Lima",
+                testimonial3_company: "Blogger de Viajes",
+                // Footer
+                footer_about_title: "AEROPUERTOS.lat",
+                footer_about_desc: "Simplificando la experiencia de viaje en Latinoamérica con tecnología e información precisa.",
+                footer_links_title: "Enlaces Rápidos",
+                footer_link_features: "Beneficios",
+                footer_link_affiliates: "Afiliados",
+                footer_link_contact: "Contacto",
+                footer_social_title: "Síguenos",
+                footer_copyright: "© 2025 AEROPUERTOS.lat. Todos los derechos reservados.",
+                footer_privacy: "Política de Privacidad",
+                footer_terms: "Términos de Servicio",
+            },
+            en: {
+                // Meta
+                "meta-title": "AEROPUERTOS.lat | Your Complete Guide to Airports in Latin America",
+                "meta-description": "Find real-time flight information, interactive maps, terminal guides, and VIP services for all airports in Latin America.",
+                // Nav
+                nav_features: "Features",
+                nav_affiliates: "Affiliates",
+                nav_testimonials: "Testimonials",
+                // Hero
+                hero_title: "All Latin American airport information, in one place.",
+                hero_subtitle: "From real-time flight status to exclusive VIP lounge guides. We simplify your travel experience.",
+                hero_cta: "Discover Now",
+                // Features
+                features_title: "Your Smart Travel Assistant",
+                features_subtitle: "Everything you need for a seamless airport experience.",
+                feature1_title: "Real-Time Flights",
+                feature1_desc: "Track any flight, get alerts for gate changes, delays, and cancellations instantly.",
+                feature2_title: "Interactive Maps",
+                feature2_desc: "Navigate terminals like an expert. Find shops, restaurants, and your boarding gate without stress.",
+                feature3_title: "VIP Guides & Services",
+                feature3_desc: "Access information on VIP lounges, transportation, and exclusive services for a first-class journey.",
+                feature4_title: "Affiliate Program",
+                feature4_desc: "Monetize your travel website. Join our partner program and offer value to your audience.",
+                // Affiliates
+                affiliates_title: "Become a Partner",
+                affiliates_desc: "We are building the largest travel affiliate network in LATAM. If you have a blog, agency, or are a content creator, join our waiting list and be the first to know.",
+                affiliates_perk1: "Competitive commissions",
+                affiliates_perk2: "Ready-to-use APIs and Widgets",
+                affiliates_perk3: "Dedicated partner support",
+                // Form
+                form_title: "Coming Soon...",
+                form_subtitle: "Get news and early access.",
+                form_email_label: "Email",
+                form_button: "Let's Talk", // <-- CHANGED
+                // Testimonials
+                testimonials_title: "What Our Users Say",
+                testimonials_subtitle: "Trusted by travelers and industry leaders.",
+                testimonial1_text: "\"The AEROPUERTOS.lat real-time flight API integrated seamlessly into our platform. Our users love it!\"",
+                testimonial1_name: "Ana Garcia",
+                testimonial1_company: "CEO, TravelTech",
+                testimonial2_text: "\"As a frequent flyer, having all the consolidated information saves me so much time and stress. A must-have!\"",
+                testimonial2_name: "Carlos Rodriguez",
+                testimonial2_company: "International Consultant",
+                testimonial3_text: "\"The terminal maps are a lifesaver. I was able to find my connection in São Paulo in minutes thanks to the app.\"",
+                testimonial3_name: "Sofia Lima",
+                testimonial3_company: "Travel Blogger",
+                // Footer
+                footer_about_title: "AEROPUERTOS.lat",
+                footer_about_desc: "Simplifying the travel experience in Latin America with technology and accurate information.",
+                footer_links_title: "Quick Links",
+                footer_link_features: "Features",
+                footer_link_affiliates: "Affiliates",
+                footer_link_contact: "Contact",
+                footer_social_title: "Follow Us",
+                footer_copyright: "© 2024 AEROPUERTOS.lat. All rights reserved.",
+                footer_privacy: "Privacy Policy",
+                footer_terms: "Terms of Service",
+            },
+            pt: {
+                // Meta
+                "meta-title": "AEROPUERTOS.lat | Seu Guia Completo de Aeroportos na América Latina",
+                "meta-description": "Encontre informações de voos em tempo real, mapas interativos, guias de terminais e serviços VIP para todos os aeroportos da América Latina.",
+                // Nav
+                nav_features: "Benefícios",
+                nav_affiliates: "Afiliados",
+                nav_testimonials: "Depoimentos",
+                // Hero
+                hero_title: "Todas as informações de aeroportos na LATAM, em um só lugar.",
+                hero_subtitle: "Do status do seu voo em tempo real a guias exclusivos de salas VIP. Simplificamos sua experiência de viagem.",
+                hero_cta: "Descubra Agora",
+                // Features
+                features_title: "Seu Assistente de Viagem Inteligente",
+                features_subtitle: "Tudo o que você precisa para uma passagem perfeita pelo aeroporto.",
+                feature1_title: "Voos em Tempo Real",
+                feature1_desc: "Acompanhe qualquer voo, receba alertas de mudanças de portão, atrasos e cancelamentos instantaneamente.",
+                feature2_title: "Mapas Interativos",
+                feature2_desc: "Navegue pelos terminais como um especialista. Encontre lojas, restaurantes e seu portão de embarque sem estresse.",
+                feature3_title: "Guias e Serviços VIP",
+                feature3_desc: "Acesse informações sobre salas VIP, transportes e serviços exclusivos para uma viagem de primeira classe.",
+                feature4_title: "Programa de Afiliados",
+                feature4_desc: "Monetize seu site de viagens. Junte-se ao nosso programa de parceiros e ofereça valor à sua audiência.",
+                // Affiliates
+                affiliates_title: "Torne-se um Parceiro",
+                affiliates_desc: "Estamos construindo a maior rede de afiliados de viagens da LATAM. Se você tem um blog, agência ou é criador de conteúdo, junte-se à nossa lista de espera e seja o primeiro a saber.",
+                affiliates_perk1: "Comissões competitivas",
+                affiliates_perk2: "APIs e Widgets prontos para usar",
+                affiliates_perk3: "Suporte dedicado para parceiros",
+                // Form
+                form_title: "Em Breve...",
+                form_subtitle: "Receba notícias e acesso antecipado.",
+                form_email_label: "E-mail",
+                form_button: "Vamos Conversar", // <-- CHANGED
+                // Testimonials
+                testimonials_title: "O que nossos usuários dizem",
+                testimonials_subtitle: "A confiança de viajantes e líderes da indústria.",
+                testimonial1_text: "\"A API de voos em tempo real da AEROPUERTOS.lat integrou-se perfeitamente à nossa plataforma. Nossos usuários adoram!\"",
+                testimonial1_name: "Ana Garcia",
+                testimonial1_company: "CEO, ViagensTech",
+                testimonial2_text: "\"Como passageiro frequente, ter todas as informações consolidadas me poupa muito tempo e estresse. Essencial!\"",
+                testimonial2_name: "Carlos Rodriguez",
+                testimonial2_company: "Consultor Internacional",
+                testimonial3_text: "\"Os mapas dos terminais são um salva-vidas. Consegui encontrar minha conexão em São Paulo em minutos graças ao aplicativo.\"",
+                testimonial3_name: "Sofia Lima",
+                testimonial3_company: "Blogueira de Viagens",
+                // Footer
+                footer_about_title: "AEROPUERTOS.lat",
+                footer_about_desc: "Simplificando a experiência de viagem na América Latina com tecnologia e informações precisas.",
+                footer_links_title: "Links Rápidos",
+                footer_link_features: "Benefícios",
+                footer_link_affiliates: "Afiliados",
+                footer_link_contact: "Contato",
+                footer_social_title: "Siga-nos",
+                footer_copyright: "© 2025 AEROPUERTOS.lat. Todos os direitos reservados.",
+                footer_privacy: "Política de Privacidade",
+                footer_terms: "Termos de Serviço",
+            }
+        };
+
+        // --- Language Switcher Function ---
+        function changeLanguage(lang) {
+            if (!translations[lang]) {
+                console.error(`Language ${lang} not found.`);
+                return;
+            }
+
+            const elements = document.querySelectorAll('[data-lang]');
+            const langData = translations[lang];
+
+            elements.forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (langData[key]) {
+                    el.innerText = langData[key];
+                }
+            });
+
+            document.getElementById('meta-title').innerText = langData['meta-title'];
+            document.getElementById('meta-description').setAttribute('content', langData['meta-description']);
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang-code') === lang) {
+                    btn.classList.remove('text-gray-400');
+                    btn.classList.add('text-brand-primary', 'font-bold');
+                } else {
+                    btn.classList.add('text-gray-400');
+                    btn.classList.remove('text-brand-primary', 'font-bold');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            changeLanguage('es');
+        });
+
+        // --- Google Sheet Form Submission ---
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyM3leepC1tdl8EDmFESdGgFnlWdAFgh8VWJgCj_kVZ_c7DsdCqeu3AwxZCzbjSuJJgxA/exec'; // <-- IMPORTANT: Replace with your script URL
+        const form = document.getElementById('subscribe-form');
+        const statusDiv = document.getElementById('form-status');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            statusDiv.textContent = 'Enviando...';
+            statusDiv.classList.remove('text-green-600', 'text-red-600');
+            
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    console.log('Success!', response);
+                    statusDiv.textContent = '¡Gracias por registrarte!';
+                    statusDiv.classList.add('text-green-600');
+                    form.reset();
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    statusDiv.textContent = 'Error. Por favor, inténtalo de nuevo.';
+                    statusDiv.classList.add('text-red-600');
+                });
+        });
+
+    </script>
+
+</body>
+</html>
